@@ -148,7 +148,34 @@ public class Person {
         }
 
         public Person build() {
+            validation();
             return new Person(this);
+        }
+
+        /**
+         * @return
+         */
+        private void validation() {
+            validationAge();
+            validationsex();
+        }
+
+        /**
+         * 
+         */
+        private void validationsex() {
+            if(!("男".equals(this.sex)||("女".equals(this.sex)))){
+                throw new RuntimeException("性别只能为男或女");
+            }
+        }
+
+        /**
+         * 
+         */
+        private void validationAge() {
+            if(this.age < 0){
+                throw new RuntimeException("年龄不能为负数");
+            }
         }
     }
 }
